@@ -144,7 +144,7 @@ nav a:hover::after {
   height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 50px;
+  border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,8 +155,8 @@ nav a:hover::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: -4px 0 20px var(--logo-sombra);
+  border-radius: 30px;
+  box-shadow: -4px 0 30px var(--logo-sombra);
   position: relative;
   transition: transform 0.6s ease, box-shadow 0.4s ease;
 }
@@ -191,6 +191,25 @@ nav a:hover::after {
 /* Brillo al pasar el mouse */
 .hero-imagen:hover::after {
   animation: shine 1s forwards;
+}
+.footer-imagen {
+  flex: 0 0 30%;
+  height: 50%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-imagen img {
+  max-width: 60%;   /* % del contenedor → más pequeña */
+  max-height: 60%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* evita deformación */
+  border-radius: 30px;
 }
 
 @keyframes shine {
