@@ -1,4 +1,5 @@
 /* ========== VARIABLES EXTRAÍDAS DEL LOGO ========== */
+/* ========== VARIABLES EXTRAÍDAS DEL LOGO ========== */
 :root {
   --logo-fondo: #f4e7c0; /* beige claro (fondo general) */
   --logo-centro: #e4a010; /* ámbar/dorado intenso (acentos) */
@@ -20,6 +21,7 @@ body {
   background-color: var(--logo-fondo); /* logo */
   color: var(--logo-chocolate); /* logo */
   min-height: 100vh;
+  line-height: 1.6;
 }
 
 /* 2. Barra lateral */
@@ -98,6 +100,7 @@ nav a:hover::after {
   align-items: center;
   min-height: 80vh;
   padding: 2rem 0;
+  gap: 2rem;
 }
 
 .hero-texto {
@@ -115,7 +118,6 @@ nav a:hover::after {
   transition: transform 0.6s ease, box-shadow 0.4s ease;
   animation: float 5s ease-in-out infinite;
   border-radius: 20px;
-
 }
 
 .hero-texto .destacado {
@@ -159,16 +161,13 @@ nav a:hover::after {
   box-shadow: -4px 0 30px var(--logo-sombra);
   position: relative;
   transition: transform 0.6s ease, box-shadow 0.4s ease;
-}
-
-/* Movimiento al cargar */
-.hero-imagen img {
   animation: float 5s ease-in-out infinite;
+  will-change: transform, box-shadow;
 }
 
 /* Movimiento flotante */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
@@ -188,7 +187,6 @@ nav a:hover::after {
   transform: skewX(-25deg);
 }
 
-/* Brillo al pasar el mouse */
 .hero-imagen:hover::after {
   animation: shine 1s forwards;
 }
@@ -221,6 +219,7 @@ nav a:hover::after {
   transform: scale(1.25);
   box-shadow: 0 10px 30px var(--logo-sombra);
 }
+
 /* Sección de productos */
 .productos {
   text-align: center;
@@ -252,7 +251,6 @@ nav a:hover::after {
   position: relative;
 }
 
-/* Imagen con efecto */
 .card-img {
   position: relative;
   overflow: hidden;
@@ -265,15 +263,10 @@ nav a:hover::after {
   border-bottom: 4px solid var(--logo-borde);
   transition: transform 0.6s ease;
   animation: float 5s ease-in-out infinite;
+  will-change: transform, box-shadow;
 }
 
-/* Movimiento flotante */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* Brillo */
+/* Brillo en imagen */
 .card-img::after {
   content: "";
   position: absolute;
@@ -292,11 +285,6 @@ nav a:hover::after {
   animation: shine 1s forwards;
 }
 
-@keyframes shine {
-  100% { left: 125%; }
-}
-
-/* Hover en tarjeta */
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 25px var(--logo-sombra);
@@ -316,6 +304,7 @@ nav a:hover::after {
   font-size: 0.95rem;
   color: #333;
 }
+
 /* Footer */
 .footer {
   background: var(--logo-chocolate);
@@ -332,9 +321,9 @@ nav a:hover::after {
   justify-content: space-around;
   align-items: center;
   margin-bottom: 1rem;
+  gap: 1rem;
 }
 
-/* Información */
 .footer-info h3, .footer-redes h3 {
   margin-bottom: 0.5rem;
   color: var(--logo-centro);
@@ -349,7 +338,6 @@ nav a:hover::after {
   color: var(--logo-centro);
 }
 
-/* Botón WhatsApp */
 .btn-whatsapp {
   display: inline-block;
   margin-top: 0.8rem;
@@ -361,64 +349,105 @@ nav a:hover::after {
   text-decoration: none;
   transition: 0.3s;
 }
-
 .btn-whatsapp:hover {
   background: #1ebe57;
   transform: scale(1.05);
 }
 
-/* Redes sociales */
 .footer-redes a {
   margin: 0 0.5rem;
   font-size: 1.5rem;
   color: var(--logo-crema);
   transition: 0.3s;
 }
-
 .footer-redes a:hover {
   color: var(--logo-centro);
 }
 
-/* Copy */
 .footer-copy {
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
-/* Responsivo */
+/* ================= RESPONSIVO ================= */
+
+/* Tablet */
 @media (max-width: 768px) {
-  .footer-contenido {
-    flex-direction: column;
-    gap: 1.5rem;
+  /* nav se convierte en barra superior */
+  nav {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    box-shadow: none;
   }
-}
 
+  .contenido {
+    margin-left: 0;
+    margin-top: 80px; /* deja espacio al nav */
+  }
 
+  nav li {
+    margin: 0.5rem;
+  }
 
-/* 7. Responsivo */
-@media (max-width: 768px) {
+  nav a {
+    font-size: 0.8rem;
+    padding: 0.5em;
+  }
+
   .hero {
     flex-direction: column;
+    text-align: center;
   }
-  .hero-texto,
-  .hero-imagen {
-    flex: 1 1 100%;
+
+  .hero-texto h1 {
+    font-size: 3rem;
   }
+
+  .hero-texto .destacado {
+    font-size: 1.6rem;
+  }
+
   .hero-imagen img {
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
   }
-  .hero-imagen {
-    height: auto;
+
+  .footer-contenido {
+    flex-direction: column;
   }
 }
+
+/* Móviles */
 @media (max-width: 480px) {
   nav {
-    width: 80px;
+    flex-direction: column;
   }
+
   nav a {
     font-size: 0.7rem;
   }
+
   .hero-texto h1 {
     font-size: 2rem;
+  }
+
+  .hero-texto strong {
+    font-size: 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-img img {
+    height: 200px;
+  }
+
+  .footer-redes {
+    text-align: center;
   }
 }
